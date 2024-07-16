@@ -64,7 +64,7 @@ namespace HealthVisualization.Activities
                         else
                         {
                             // Permissão negada, você pode mostrar uma mensagem ou fazer outra ação
-                            Toast.MakeText(this, "Permissão de localização foi negada.", ToastLength.Short).Show(); // TODO: Definir uma nova mensagem toast
+                            Toast.MakeText(this, "Permissão de localização foi negada. Por favor, habilite a permissão nas configurações.", ToastLength.Short).Show(); // TODO: Definir uma nova mensagem toast
                         }
                     }
                     break;
@@ -76,7 +76,7 @@ namespace HealthVisualization.Activities
             var mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
 
-            _startLocation = new LatLng(-23.550520, -46.633308); // Início do percurso (São Paulo, Brasil) // TODO: Definir um novo ponto de início da rota
+            _startLocation = new LatLng(-22.9068, -43.1729); // Exemplo: Rio de Janeiro, Brasil  // TODO: Definir um novo ponto de início da rota
             _route = GenerateRoute(_startLocation, 5000, 50); // Gera uma rota de 5km com 50 pontos // TODO: Definir uma nova rota
 
             _handler = new Handler();
@@ -147,7 +147,7 @@ namespace HealthVisualization.Activities
             }
             else
             {
-                Toast.MakeText(this, "GPS is not enabled", ToastLength.Short).Show(); // TODO: Definir uma nova mensagem toast
+                Toast.MakeText(this, "GPS não está habilitado. Por favor, habilite o GPS nas configurações.", ToastLength.Short).Show();                // TODO: Definir uma nova mensagem toast
             }
         }
 
@@ -176,7 +176,7 @@ namespace HealthVisualization.Activities
                     .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
 
                 // Atualiza o texto com a latitude e longitude atual
-                _locationTextView.Text = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}"; // TODO: Definir um novo texto do locationTextView
+                _locationTextView.Text = $"Localização atual - Latitude: {location.Latitude}, Longitude: {location.Longitude}";                // TODO: Definir um novo texto do locationTextView
             }
         }
 
